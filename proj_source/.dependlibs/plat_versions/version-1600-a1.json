@@ -1,0 +1,43 @@
+{
+    "nametype": "1600 a1",
+
+    "matchs": [
+        {
+            "matchname": "U1600_A1_30",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "02"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "1600",
+                "product_module": "01"
+            },
+            
+            "build": {
+                "version_macro": "A1_VERSION_30",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.02.04.2",
+                    "version": "04.2",
+                    "date": "25.8.20",
+                    "log": "V2.15版本程序"
+                }
+            ]
+        }
+    ]
+}

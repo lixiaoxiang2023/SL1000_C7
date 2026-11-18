@@ -1,0 +1,44 @@
+﻿{
+    "nametype": "mp1200 d1",
+
+    "matchs": [
+        {
+            "matchname": "MP1200_D1_CHN",
+            "verflaglocation": "0x08008188",
+            
+            "hwversion": {
+                "version":"1.01",
+                "date":"24.03.19"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "04",
+                "product": "1200",
+                "product_module": "01"
+            },
+            
+            "build": {
+                "version_macro": "D1_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.00.6",
+                    "version": "03.1",
+                    "date": "25.12.18",
+                    "log": "D1优化气夹控制程序"
+
+                }
+            ]
+        }
+    ]
+}

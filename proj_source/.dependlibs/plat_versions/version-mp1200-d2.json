@@ -1,0 +1,43 @@
+﻿{
+    "nametype": "mp1200 d2",
+
+    "matchs": [
+        {
+            "matchname": "MP1200_D2_CHN",
+            "verflaglocation": "0x08008188",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"24.04.19"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "04",
+                "product": "1200",
+                "product_module": "02"
+            },
+            
+            "build": {
+                "version_macro": "D2_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.00.0",
+                    "version": "04.1",
+                    "date": "25.03.15",
+                    "log": "D2修改电机速度"
+                }
+            ]
+        }
+    ]
+}

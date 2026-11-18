@@ -1,0 +1,43 @@
+﻿{
+    "nametype": "sl1000 c5",
+
+    "matchs": [
+        {
+            "matchname": "SL1000_C5_CHN",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "03",
+                "product": "1000",
+                "product_module": "05"
+            },
+            
+            "build": {
+                "version_macro": "C5_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.06.1",
+                    "version": "07.1",
+                    "date": "25.09.30",
+                    "log": "固定库涵数"
+                }
+            ]
+        }
+    ]
+}

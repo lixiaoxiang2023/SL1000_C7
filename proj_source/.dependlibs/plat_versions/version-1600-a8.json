@@ -1,0 +1,44 @@
+{
+    "nametype": "1600_a8",
+
+    "matchs": [
+        {
+            "matchname": "U1600_A8",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.01",
+                "date":"22.03.03"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "1600",
+                "product_module": "08"
+            },
+            
+            "build": {
+                "version_macro": "U1600_EN",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+            
+            "vers": [
+                {
+                    "id": "1.01.01.01.1",
+                    "version": "01.1",
+                    "date": "2023.3.2",
+                    "log": "增加意大利程序"
+                }
+            ]
+        }
+      
+    ]
+}

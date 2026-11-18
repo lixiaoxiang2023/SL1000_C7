@@ -1,0 +1,43 @@
+﻿{
+    "nametype": "sl1000 c2",
+
+    "matchs": [
+        {
+            "matchname": "SL1000_C2_CHN",
+            "verflaglocation": "0x08008188",
+            
+            "hwversion": {
+                "version":"1.07",
+                "date":"22.03.19"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "03",
+                "product": "1000",
+                "product_module": "02"
+            },
+            
+            "build": {
+                "version_macro": "CIS_FPGA_V2",
+                "macro2": "C2_VERSION",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.09.1",
+                    "version": "11.1",
+                    "date": "25.09.30",
+                    "log": "C2试产新结构程序"
+                }
+            ]
+        }
+    ]
+}

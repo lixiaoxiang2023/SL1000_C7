@@ -1,0 +1,43 @@
+{
+    "nametype": "sl1000 c7",
+
+    "matchs": [
+        {
+            "matchname": "SL1000_C7_CHN",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.05",
+                "date":"22.03.03"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "03",
+                "product": "1000",
+                "product_module": "07"
+            },
+            
+            "build": {
+                "version_macro": "C7_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.10.1",
+                    "version": "16.1",
+                    "date": "26.02.28",
+                    "log": "不带称重"
+                }
+            ]
+        }
+    ]
+}

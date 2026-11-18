@@ -1,0 +1,233 @@
+{
+    "nametype": "500_a1",
+
+    "matchs": [
+        {
+            "matchname": "EO_A1_510",
+            "verflaglocation": "0x08008200",
+            
+            "hwversion": {
+                "version":"1.01",
+                "date":"22.03.03",
+	"compatible": "02"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "500",
+                "product_module": "03"
+            },
+            
+            "build": {
+                "version_macro": "EO_A1_510",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+            
+            "vers": [
+                {
+                    "id": "1.01.02.01.5",
+                    "version": "01.5",
+                    "date": "24.01.19",
+                    "log": "V2.13版本程序"
+                }
+            ]
+        },
+       {
+            "matchname": "EO_A1_510_OLD",
+            "verflaglocation": "0x08008200",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03",
+	"compatible": "02"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "02"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "500",
+                "product_module": "03"
+            },
+            
+            "build": {
+                "version_macro": "EO_A1_510_OLD",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+            
+            "vers": [
+                {
+                    "id": "1.01.02.01.5",
+                    "version": "03.1",
+                    "date": "24.01.19",
+                    "log": "V2.13版本程序"
+                }
+            ]
+        },
+{
+            "matchname": "EO_A1_300",
+            "verflaglocation": "0x08008200",
+            
+            "hwversion": {
+                "version":"1.01",
+                "date":"25.07.16",
+	"compatible": "02"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "06"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "300",
+                "product_module": "06"
+            },
+            
+            "build": {
+                "version_macro": "EO_A1_300",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+            
+            "vers": [
+                {
+                    "id": "1.01.01.01.6",
+                    "version": "01.6",
+                    "date": "25.07.16",
+                    "log": "新标切换"
+                }
+            ]
+        },
+{
+            "matchname": "EO_A1_300_OLD",
+            "verflaglocation": "0x08008200",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03",
+	"compatible": "02"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "04"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "500",
+                "product_module": "03"
+            },
+            
+            "build": {
+                "version_macro": "EO_A1_300_OLD",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+            
+            "vers": [
+                {
+                    "id": "1.01.02.01.5",
+                    "version": "03.1",
+                    "date": "24.01.19",
+                    "log": "V2.13版本程序"
+                }
+            ]
+        },
+        {
+            "matchname": "EO_A1_500",
+            "verflaglocation": "0x08008200",
+            
+            "hwversion": {
+                "version":"1.01",
+                "date":"24.12.10"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "05"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "500",
+                "product_module": "03"
+            },
+
+            "build": {
+                "version_macro": "EO_A1_500",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+            
+            "vers": [
+                {
+                    "id": "1.01.01.01.6",
+                    "version": "01.6",
+                    "date": "24.04.01",
+                    "log": "V2.14版本程序"
+                }
+            ]
+        },
+{
+            "matchname": "EO_A1_500_OLD",
+            "verflaglocation": "0x08008200",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03",
+	"compatible": "02"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "06"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "500",
+                "product_module": "03"
+            },
+            
+            "build": {
+                "version_macro": "EO_A1_500_OLD",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+            
+            "vers": [
+                {
+                    "id": "1.01.02.01.5",
+                    "version": "03.1",
+                    "date": "24.01.19",
+                    "log": "V2.13版本程序"
+                }
+            ]
+        }
+    ]
+}

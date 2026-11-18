@@ -1,0 +1,43 @@
+{
+    "nametype": "1600 c2",
+
+    "matchs": [
+        {
+            "matchname": "U1600_C2_30",
+            "verflaglocation": "0x08008200",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "03"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "1600",
+                "product_module": "02"
+            },
+            
+            "build": {
+                "version_macro": "CIS_FPGA_V1",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.02.04.03",
+                    "version": "04.03",
+                    "date": "25.10.10",
+                    "log": "V3.02版本程序"
+                }
+            ]
+        }
+    ]
+}

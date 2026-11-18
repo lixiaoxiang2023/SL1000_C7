@@ -1,0 +1,43 @@
+{
+    "nametype": "sl1000 c6",
+
+    "matchs": [
+        {
+            "matchname": "SL1000_C6_CHN",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.09",
+                "date":"23.12.19"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "03",
+                "product": "1000",
+                "product_module": "06"
+            },
+            
+            "build": {
+                "version_macro": "C6_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.10.1",
+                    "version": "10.0",
+                    "date": "24.01.03",
+                    "log": "增加温控"
+                }
+            ]
+        }
+    ]
+}

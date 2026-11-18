@@ -1,0 +1,80 @@
+{
+    "nametype": "sl1000 c8",
+
+    "matchs": [
+        {
+            "matchname": "SL1000_C8_CHN",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.06",
+                "date":"23.08.30"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "03",
+                "product": "1000",
+                "product_module": "08"
+            },
+            
+            "build": {
+                "version_macro": "C8_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.11.1",
+                    "version": "11.1",
+                    "date": "25.01.21",
+                    "log": "增加意大利程�?"
+                }
+            ]
+        },
+		{
+            "matchname": "MP1200_D8_CHN",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.06",
+                "date":"23.08.30"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "04",
+                "product": "1200",
+                "product_module": "08"
+            },
+            
+            "build": {
+                "version_macro": "D8_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.01.1",
+                    "version": "01.1",
+                    "date": "25.01.21",
+                    "log": "首�??"
+                }
+            ]
+        }
+    ]
+}

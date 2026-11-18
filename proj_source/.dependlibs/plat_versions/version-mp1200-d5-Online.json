@@ -1,0 +1,43 @@
+﻿{
+    "nametype": "mp1200 d5",
+
+    "matchs": [
+        {
+            "matchname": "MP1200_D5_CHN",
+            "verflaglocation": "0x08008188",
+            
+            "hwversion": {
+                "version":"1.00",
+                "date":"22.10.20"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "04",
+                "product": "1200",
+                "product_module": "02"
+            },
+            
+            "build": {
+                "version_macro": "D5_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.00.0",
+                    "version": "03.1",
+                    "date": "25.03.14",
+                    "log": "c2降低USB传输速度"
+                }
+            ]
+        }
+    ]
+}

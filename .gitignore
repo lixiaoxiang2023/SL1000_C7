@@ -1,0 +1,54 @@
+# ===== SVN 元数据（项目由 SVN 检出，不应入库） =====
+.svn/
+*.svn-base
+
+# ===== IAR / 编译器构建产物 =====
+*.o
+*.pbi
+*.cout
+*.lst
+*.db
+*.db-journal
+*.log
+*.log.err
+*.jlink
+*.axf
+*.elf
+*.out
+*.map
+*.srec
+*.hex
+*.bin
+Debug/
+Release/
+Obj/
+List/
+Exe/
+*.pbd
+*.eww.bak
+
+# ===== 依赖库的历史备份快照（重复内容，不应入库） =====
+.dependlibs/repo_bkp/
+repo_bkp/
+*.bak
+
+# ===== 第三方工具可执行文件（体积大，不应入库） =====
+*.exe
+*.msi
+*.zip
+*.7z
+*.dll
+
+# ===== 本地 IDE / 系统文件 =====
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ===== AI 分析过程的临时产物（保留 .md 报告，排除日志与二进制） =====
+AI_Analysis_Report/Build_Logs/*.log
+AI_Analysis_Report/Build_Logs/*.json
+AI_Analysis_Report/Build_Logs/*.bin
+AI_Analysis_Report/Build_Logs/*.jlink
+AI_Analysis_Report/backup/

@@ -1,0 +1,43 @@
+{
+    "nametype": "1600_a6",
+
+    "matchs": [
+        {
+            "matchname": "U1600_A6_30",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.00",
+                "date":"24.01.26"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "00",
+                "compatible": "02"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "1600",
+                "product_module": "06"
+            },
+            
+            "build": {
+                "version_macro": "A6_VERSION_30",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.00.01.01.2",
+                    "version": "01.2",
+                    "date": "24.01.26",
+                    "log": "V2.12¡ã?¡À????¨°"
+                }
+            ]
+        }
+    ]
+}

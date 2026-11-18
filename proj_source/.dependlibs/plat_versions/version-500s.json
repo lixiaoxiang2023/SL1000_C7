@@ -1,0 +1,139 @@
+{
+    "nametype": "u500_bins",
+
+    "matchs": [
+        {
+            "matchname": "U330_M_CHN_ENG",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "0500",
+                "product_module": "01"
+            },
+            
+            "build": {
+                "version_macro": "U330_V1_CHN",
+                "macro2": "SYS_MODE_330",
+                "macro3": "CONFIG_330_00",
+                "withtime": "WITH_TIME",
+            },
+            
+            "vers": [
+                {
+                    "id": "1.01.01.05.1",
+                    "version": "05.1",
+                    "date": "22.3.2",
+                    "log": "解决感应问题"
+                },
+                {
+                    "id": "1.01.01.06.1",
+                    "version": "06.1",
+                    "date": "22.8.2",
+                    "log": "解决震动问题"
+                },
+                {
+                    "version": "07.1",
+                    "date": "23.3.2",
+                    "log": "增加文件属性"
+                }
+            ]
+        },
+        {
+            "matchname": "U330_M_ENG__IT",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03"
+            },
+            
+            "swversion":  {
+                "customer": "2",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "0500",
+                "product_module": "01"
+            },
+            
+            "build": {
+                "version_macro": "U330_V2_ENG_PPC_130",
+                "macro2": "SYS_MODE_330",
+                "macro3": "CONFIG_330_00",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "2.01.01.01.1",
+                    "version": "01.1",
+                    "date": "2022.8.2",
+                    "log": "增加意大利程序"
+                },
+                {
+                    "version": "02.1",
+                    "date": "2023.3.2",
+                    "log": "解决震动问题"
+                }
+            ]
+        },
+        {
+            "matchname": "U330_M_ENG_V",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.02",
+                "date":"22.03.03"
+            },
+            
+            "swversion":  {
+                "customer": "3",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "0500",
+                "product_module": "01"
+            },
+            
+            "build": {
+                "version_macro": "U330_V3_ENG",
+                "macro2": "SYS_MODE_330",
+                "macro3": "CONFIG_330_00",
+                "withtime": "WITH_TIME",
+            },
+
+            "vers": [
+                {
+                    "id": "3.01.01.01.1",
+                    "version": "01.1",
+                    "date": "2022.3.2",
+                    "log": "增加英文程序程序"
+                },
+                {
+                    "id": "3.01.01.02.1",
+                    "version": "02.1",
+                    "date": "2023.3.2",
+                    "log": "解决震动问题"
+                }
+            ]
+        }
+    ]
+}

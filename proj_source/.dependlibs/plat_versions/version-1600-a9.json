@@ -1,0 +1,43 @@
+﻿{
+    "nametype": "1600 a9",
+
+    "matchs": [
+        {
+            "matchname": "U1600_A9_30",
+            "verflaglocation": "0x08008130",
+            
+            "hwversion": {
+                "version":"1.01",
+                "date":"22.11.30"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "01",
+                "product": "1600",
+                "product_module": "09"
+            },
+            
+            "build": {
+                "version_macro": "A9_VERSION_30",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.05.3",
+                    "version": "05.3",
+                    "date": "25.09.15",
+                    "log": "扫码模块通用程序"
+                }
+            ]
+        }
+    ]
+}

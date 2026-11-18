@@ -1,0 +1,43 @@
+{
+    "nametype": "sl1000 c3",
+
+    "matchs": [
+        {
+            "matchname": "SL1000_C3_CHN",
+            "verflaglocation": "0x08008188",
+            
+            "hwversion": {
+                "version":"1.07",
+                "date":"25.7.03"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "03",
+                "product": "1000",
+                "product_module": "03"
+            },
+            
+            "build": {
+                "version_macro": "C3_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.12.1",
+                    "version": "12.1",
+                    "date": "25.12.13",
+                    "log": "更改排空程序"
+                }
+            ]
+        }
+    ]
+}

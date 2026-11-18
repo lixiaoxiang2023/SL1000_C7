@@ -1,0 +1,17 @@
+## 6. 顺带查出的其他隐患（不是本次主因，但都是真实缺陷）
+
+| 编号 | 位置 | 问题 | 后果 |
+|---|---|---|---|
+| H-01 | `TaskTempModule.c:171-176` + `pwm.c:129` | `Write()` 遇到 `bySpd==0` **直接 `return -1`**，什么也不做；但 `wPwm_Old` 已被更新为 0 | 固化通道 `wPwm` 到 0 时加热**锁死在上一次占空比**，直到温度超过 `Tset+50` 才被 `Stop()`。烘干通道用 `Stop(1)` 规避了（`:273-276`），两条路写法不一致 |
+| H-02 | `pwm.c:135` | 每次 `Write()` 把 `bySpdCnt` 清 0，而 ISR 在 `bySpdCnt==0` 时强制输出 ON | P 控制几乎每拍改占空比 → PWM 周期被频繁截断重启 → **实际占空比高于设定值**，纹波变大 |
+| H-03 | `pwm.c:99-103` | 单次 `Write()` 只保证 `dwStep=50000` 个周期 | 周期 100ms → **无人刷新时加热最长保持 83 分钟**。控制任务一旦卡死，就是无保护加热 |
+| H-04 | `tempfan.c:88-93`、`167-172` | `if(bADCbusy==false) break; bADCbusy=true;` **非原子**，两个温控任务共用 | 可同时进入 ADC 临界区 |
+| H-05 | `adc.c:292-315` | 每次 `ReadOne` 都 `ClrChn/AddChn/ADON/RSTCAL/CAL`，**无任何互斥**；`while(EOC==0){}` **无超时** | 并发时可能读到对方通道，或**永久卡死**该任务 |
+| H-06 | `TaskTempModule.c:367/378` | 两个温控任务都是 `tskIDLE_PRIORITY`（0），全机 11 个任务里 10 个都是 0，只有 `XcanTask` 是 1 | **热保护环是整机最低调度等级**，重负载时可能被长时间推迟 |
+| H-07 | `TaskMove.c:821-825` | `OpenFunHeat()` 只置 `bHeatFanSta`，**不启动任何循环风机**（`FunCtrl.OpenHeatFan()` 被注释） | 无风加热 → 局部热点，NTC 读数不代表试纸处温度 |
+| H-08 | `devinit.c:109-111` vs `146-147` | PB14/PB15 先被配成 SPI2 的 AF（AT45），又被配成 GPIO 输出 | 目前 `At45MemInit` **未链接进 App**（`C7Detect.map` 中 0 次），所以没事；**一旦启用 AT45，加热口会变成 AF，`Stop()` 将无效** |
+| H-09 | `piheat_pid.c:68/74` | `dev_sum` 无界累加，实测已达 **20546**（`0x46A08CD9`） | 当前 `Ki=0` 无害；任何人把 `Ki` 设为非 0，立刻饱和到 100% 并锁死 |
+| H-10 | `TaskTempModule.c:135/223` | 温度每 5 拍读一次，每拍 `vTaskDelay(20)` | 实际控制周期 **≈120ms**，保护动作最迟延迟 120ms + ADC 时间 |
+
+---
+

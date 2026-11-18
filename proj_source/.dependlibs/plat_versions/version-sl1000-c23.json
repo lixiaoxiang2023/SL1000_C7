@@ -1,0 +1,43 @@
+{
+    "nametype": "sl1000 c23",
+
+    "matchs": [
+        {
+            "matchname": "SL1000_C23_CHN",
+            "verflaglocation": "0x08008188",
+            
+            "hwversion": {
+                "version":"1.00",
+                "date":"23.02.23"
+            },
+            
+            "swversion":  {
+                "customer": "1",
+                "mainverion": "01",
+                "compatible": "01"
+            },
+            
+            "arch" : {
+                "productline" : "03",
+                "product": "1000",
+                "product_module": "23"
+            },
+            
+            "build": {
+                "version_macro": "C23_VERSION",
+                "macro2": "MACRO_2",
+                "macro3": "MACRO_3",
+                "withtime": "WITH_TIME"
+            },
+
+            "vers": [
+                {
+                    "id": "1.01.01.00.0",
+                    "version": "00.0",
+                    "date": "23.07.26",
+                    "log": "增加意大利程序"
+                }
+            ]
+        }
+    ]
+}
