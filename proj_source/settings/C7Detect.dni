@@ -9,9 +9,12 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=-368167070
+Checksum=832956259
 [JLinkDriver]
 CStepIntDis=_ 0
+TraceBufferSize=0x00010000
+TraceStallIfFIFOFull=0x00000000
+TracePortSize=0x00000004
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -46,6 +49,9 @@ Fmt3=stVersionTdf-dwVer	4	0
 Fmt4=stVersionTdf-dwVerDate	4	0
 [watch_formats]
 Fmt0={W}42:g_pstC7SysPare->wTareVal	3	0
+[Trace1]
+Enabled=0
+ShowSource=1
 [Trace2]
 Enabled=0
 ShowSource=0

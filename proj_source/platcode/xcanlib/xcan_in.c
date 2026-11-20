@@ -165,6 +165,10 @@ void Mid(DevPortTdf *pstPort, stHeadTdf *pstHead, unsigned char *pbyIn, unsigned
         return;
     }
 
+    if((((unsigned int)pstPort->stRx.wRxPkgCnt * dwFrameLen) + dwLenIn) > (unsigned int)pstPort->wMaxLen) {
+        pstPort->stRx.blIsRxing = false;
+        return;
+    }
     memcpy(pstPort->pbyRx + (pstPort->stRx.wRxPkgCnt * dwFrameLen), pbyIn, dwLenIn);
     pstPort->stRx.wNeedPkgNo = pstHead->stHead.bit10Pkg_Addr - 1;
     pstPort->stRx.wRxPkgCnt ++;
@@ -268,6 +272,10 @@ static void End(DevPortTdf *pstPort, stHeadTdf *pstHead, unsigned char *pbyIn, u
     }
 
     // 数据接收完成，拷贝数据
+    if((((unsigned int)wIoStart) + dwLen) > (unsigned int)pstPort->wMaxLen) {
+        pstPort->stRx.blIsRxing = false;
+        return;
+    }
     XCAN_GET_MUTEX();
     memcpy(pstPort->pbyIoSrc + wIoStart, pstPort->pbyRx, dwLen);
     XCAN_PUT_MUTEX();
@@ -316,6 +324,7 @@ static void Sig(DevPortTdf *pstPort, stHeadTdf *pstHead, unsigned char *pbyIn, u
     wIoStart = pstHead->stHead.bit10Pkg_Addr;
     if(dwLen > pstPort->wMaxLen) return;
     if(dwLen > pstPort->pstCommOps->stChn.dwFrameDataLen) dwLen = pstPort->pstCommOps->stChn.dwFrameDataLen;
+    if((((unsigned int)wIoStart) + dwLen) > (unsigned int)pstPort->wMaxLen) return;
     //对于单数据包传输时，功能区搭载的只是IO资源区的数据起始地址
     XCAN_GET_MUTEX();
     memcpy(pstPort->pbyIoSrc + wIoStart, pbyIn, dwLen);

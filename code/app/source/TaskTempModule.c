@@ -478,6 +478,7 @@ void PidInit(void)
     stPiPid.dev         = 0.0;
     stPiPid.dev_last    = 0.0;
     stPiPid.dev_next    = 0.0;
+    stPiPid.dev_sum     = 0.0;
     stPiPid.Kp          = 20;//14 18
     stPiPid.Ki          = 0.00;
     stPiPid.Kd          = 0.00;
@@ -490,6 +491,7 @@ void PidInit(void)
     stPiPidFan.dev         = 0.0;
     stPiPidFan.dev_last    = 0.0;
     stPiPidFan.dev_next    = 0.0;
+    stPiPidFan.dev_sum     = 0.0;
     stPiPidFan.Kp          = 20;//14 18
     stPiPidFan.Ki          = 0.00;
     stPiPidFan.Kd          = 0.00;

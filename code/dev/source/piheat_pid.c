@@ -71,7 +71,7 @@ float PidLoc(stPidTdf *pstPid)
 
   pstPid->dev_last = pstPid->dev;
   if(isnan(pstPid->dev_sum)) pstPid->dev_sum = 0;
-  if(pstPid->fout > 300) pstPid->dev_sum = 300;
+  if(pstPid->dev_sum > 300) pstPid->dev_sum = 300;
   return pstPid->fout;
 }
 
@@ -101,7 +101,7 @@ float PidLocFan(stPidTdf *pstPid)
 
   pstPid->dev_last = pstPid->dev;
   if(isnan(pstPid->dev_sum)) pstPid->dev_sum = 0;
-  if(pstPid->fout > 300) pstPid->dev_sum = 300;
+  if(pstPid->dev_sum > 300) pstPid->dev_sum = 300;
   
   return pstPid->fout;
 }

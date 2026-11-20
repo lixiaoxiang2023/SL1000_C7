@@ -334,7 +334,7 @@ void SubTask1(void *pvParameters)
             Queuebuf->Task = NULL;
             Queuebuf->cTaskNum = 0;
             g_stC7.stOut.byCmdisBusy[0] = 0;
-            if((g_stC7.stIn.byCmd != CMD_C7_CAR_TO_OPC) || (g_stC7.stIn.byCmd != CMD_C7_OPC_TO_DROP) || (g_stC7.stIn.byCmd != CMD_C7_FULL_OIL_RE) || (g_stC7.stIn.byCmd !=CMD_C7_RESE_TO_DROP))
+            if((g_stC7.stIn.byCmd != CMD_C7_CAR_TO_OPC) && (g_stC7.stIn.byCmd != CMD_C7_OPC_TO_DROP) && (g_stC7.stIn.byCmd != CMD_C7_FULL_OIL_RE) && (g_stC7.stIn.byCmd !=CMD_C7_RESE_TO_DROP))
             {//除这两个流程需立即返回，其余在调试界面完成返回
                 g_stC7.stOut.stoutCmd.byCmdCnt = g_stC7.stIn.byCmdCnt;
                 bCmdReturn = true;
@@ -561,6 +561,7 @@ void MoveTask(void *pvParameters)
         if((g_stC7.stOut.stoutCmd.byCmdCnt != g_stC7.stIn.byCmdCnt) && (bCmdReturn == true))
         {
             bCmdReturn = false;
+            bDoCmd = false;   /* 每条命令处理前复位，避免上次残留影响未知命令判定 */
             g_stC7.stOut.stoutCmd.byCmd = g_stC7.stIn.byCmd;
 
             for(int Count = 0;Count < sizeof(CtrlCmd)/sizeof(CtrlCmd[0]); Count++)
@@ -579,6 +580,7 @@ void MoveTask(void *pvParameters)
             if(bDoCmd == false)
             {//非定义命令
                  g_stC7.stOut.stoutCmd.byCmdCnt = g_stC7.stIn.byCmdCnt;
+                 bCmdReturn = true;   /* 未知命令也须开门，否则后续命令被永久丢弃 */
             }
         }
     }
