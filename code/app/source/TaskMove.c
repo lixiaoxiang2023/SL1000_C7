@@ -49,7 +49,7 @@ xQueueHandle           g_Queue_SubTask[SubTaskNO];
 Global Variables Definition全局变量定义
 ******************************************************************************/
 bool bTareCal = false;
-bool bCmdReturn = true;
+volatile bool bCmdReturn = true;   /* AI-FIX N-11: MoveTask 与 SubTask1 共享, 必须 volatile */
 uint16_t wDebugBk = 0;
 bool bDebugSta = false;
 //uint16_t wX_Offset = 0;
@@ -86,6 +86,21 @@ CtrlCmdTdf  OldCmd[SubTaskNO] =
     {0XFF,NULL,0},
     {0XFF,NULL,0},
 };
+/******************************************************************************
+AI-FIX N-11 : SubTask1 槽位命令快照
+  缺陷: SubTask1 收尾时用 g_stC7.stIn.byCmd / byCmdCnt 判断并回灌, 二者均为
+        实时值。若该槽位执行期间上位机已下发新命令, stIn 已被覆盖, 就会把
+        新命令的计数回灌进 stoutCmd.byCmdCnt, 使 MoveTask 门闸
+        (stoutCmd.byCmdCnt != stIn.byCmdCnt) 永不成立, 新命令被永久丢弃:
+        不投递、byCmdisBusy 不置位、动作不执行、上位机读到空闲即报完成。
+        且 c71b(CAR_TO_OPC) 本在排除名单内, 因判据读实时值导致排除失效,
+        反而执行了回灌, 属白名单被实时值绕过。
+  修正: 投递时快照本槽位命令码与计数, 收尾只用快照, 不再读实时 stIn。
+******************************************************************************/
+static volatile unsigned char bySubTask1Cmd    = 0xFF;
+static volatile unsigned char bySubTask1CmdCnt = 0;
+static volatile unsigned char byCurCmd    = 0xFF;   /* N-11b: 门闸内原子快照-本拍命令码 */
+static volatile unsigned char byCurCmdCnt = 0;      /* N-11b: 门闸内原子快照-本拍命令计数 */
 /******************************************************************************
 内部全局变量定义
 ******************************************************************************/
@@ -334,9 +349,9 @@ void SubTask1(void *pvParameters)
             Queuebuf->Task = NULL;
             Queuebuf->cTaskNum = 0;
             g_stC7.stOut.byCmdisBusy[0] = 0;
-            if((g_stC7.stIn.byCmd != CMD_C7_CAR_TO_OPC) && (g_stC7.stIn.byCmd != CMD_C7_OPC_TO_DROP) && (g_stC7.stIn.byCmd != CMD_C7_FULL_OIL_RE) && (g_stC7.stIn.byCmd !=CMD_C7_RESE_TO_DROP))
+            if((bySubTask1Cmd != CMD_C7_CAR_TO_OPC) && (bySubTask1Cmd != CMD_C7_OPC_TO_DROP) && (bySubTask1Cmd != CMD_C7_FULL_OIL_RE) && (bySubTask1Cmd != CMD_C7_RESE_TO_DROP))
             {//除这两个流程需立即返回，其余在调试界面完成返回
-                g_stC7.stOut.stoutCmd.byCmdCnt = g_stC7.stIn.byCmdCnt;
+                g_stC7.stOut.stoutCmd.byCmdCnt = bySubTask1CmdCnt;
                 bCmdReturn = true;
             }
         }
@@ -461,9 +476,18 @@ void SubTaskCtrl(u16  byCmd)
                 if(OldCmd[0].Cmd == 0xff)
                 {
                     g_stC7.stOut.byCmdisBusy[0] = 1;
+                    bySubTask1Cmd    = (unsigned char)byCmd;
+                    bySubTask1CmdCnt = byCurCmdCnt;
                     memcpy(&OldCmd[0], &CtrlCmd[Count], sizeof(OldCmd[0]));
                     pCtrlCmd = &OldCmd[0];
                     xQueueSend(g_Queue_SubTask[0], &pCtrlCmd, 0);
+                }
+                else
+                {
+                    /* N-11b: 槽位被占用(前一条 cTaskNum==0 命令仍在执行)而未能投递时
+                       也必须重新开门。否则 bCmdReturn 停在 false, 门闸永久关闭,
+                       后续所有命令被丢弃(与 N-01 同族的门闸锁死)。 */
+                    bCmdReturn = true;
                 }
                 break;
             }
@@ -557,29 +581,37 @@ void MoveTask(void *pvParameters)
 //        GYRO_X = DevMpu6050->MPU6050_Get_Data(0,GYRO_XOUT_H);
 //        GYRO_Y = DevMpu6050->MPU6050_Get_Data(0,GYRO_YOUT_H);
 //        GYRO_Z = DevMpu6050->MPU6050_Get_Data(0,GYRO_ZOUT_H);
-        vTaskDelay(10);
-        if((g_stC7.stOut.stoutCmd.byCmdCnt != g_stC7.stIn.byCmdCnt) && (bCmdReturn == true))
+        vTaskDelay(2);   /* AI-FIX N-11: 10ms->2ms, 缩小新命令写入与门闸检查的竞态窗口 */
+        /* N-11b: 门闸前一次性原子快照, 门闸判断与后续处理全部复用同一份快照,
+           避免 byCmd 与 byCmdCnt 分次读取造成 torn-read / 码与计数不自洽 */
+        taskENTER_CRITICAL();
+        byCurCmd    = g_stC7.stIn.byCmd;
+        byCurCmdCnt = g_stC7.stIn.byCmdCnt;
+        taskEXIT_CRITICAL();
+        if((g_stC7.stOut.stoutCmd.byCmdCnt != byCurCmdCnt) && (bCmdReturn == true))
         {
             bCmdReturn = false;
             bDoCmd = false;   /* 每条命令处理前复位，避免上次残留影响未知命令判定 */
-            g_stC7.stOut.stoutCmd.byCmd = g_stC7.stIn.byCmd;
+            g_stC7.stOut.stoutCmd.byCmd = byCurCmd;
 
             for(int Count = 0;Count < sizeof(CtrlCmd)/sizeof(CtrlCmd[0]); Count++)
             {
-                if(g_stC7.stIn.byCmd == CtrlCmd[Count].Cmd)
+                if(byCurCmd == CtrlCmd[Count].Cmd)
                 {
                     bDoCmd = true;
-                    SubTaskCtrl(g_stC7.stIn.byCmd);
-                    if((CtrlCmd[Count].cTaskNum != 0) || (g_stC7.stIn.byCmd == CMD_C7_CAR_TO_OPC) || (g_stC7.stIn.byCmd == CMD_C7_OPC_TO_DROP) || (g_stC7.stIn.byCmd == CMD_C7_FULL_OIL_RE) || (g_stC7.stIn.byCmd == CMD_C7_RESE_TO_DROP))
+                    SubTaskCtrl(byCurCmd);
+                    if((CtrlCmd[Count].cTaskNum != 0) || (byCurCmd == CMD_C7_CAR_TO_OPC) 
+                    || (byCurCmd == CMD_C7_OPC_TO_DROP) || (byCurCmd == CMD_C7_FULL_OIL_RE) 
+                    || (byCurCmd == CMD_C7_RESE_TO_DROP))
                     {
-                        g_stC7.stOut.stoutCmd.byCmdCnt = g_stC7.stIn.byCmdCnt;
+                        g_stC7.stOut.stoutCmd.byCmdCnt = byCurCmdCnt;
                         bCmdReturn = true;
                     }
                 }
             }
             if(bDoCmd == false)
             {//非定义命令
-                 g_stC7.stOut.stoutCmd.byCmdCnt = g_stC7.stIn.byCmdCnt;
+                 g_stC7.stOut.stoutCmd.byCmdCnt = byCurCmdCnt;
                  bCmdReturn = true;   /* 未知命令也须开门，否则后续命令被永久丢弃 */
             }
         }

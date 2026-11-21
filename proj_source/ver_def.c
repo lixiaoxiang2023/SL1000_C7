@@ -15,11 +15,11 @@
 * File Path     : ./
 * Project       : urit department-1 platcode
 * Author        : xuqiang auto tool V2.0
-* Date          : 2026.09.23
+* Date          : 2026.11.21
 * Description   : for fw or sw version control. tools V2
 *
 * modify logs:  Copyright urit Co.,Ltd.All Right Reserved
-* 2026.09.23    xuqiang   create
+* 2026.11.21    xuqiang   create
 *******************************************************************************/
 
 /*******************************************************************************

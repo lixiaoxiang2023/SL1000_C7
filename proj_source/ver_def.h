@@ -15,11 +15,11 @@
 * File Path     : ./
 * Project       : urit department-1 platcode
 * Author        : xuqiang auto tool V2.0
-* Date          : 2026.09.23
+* Date          : 2026.11.21
 * Description   : for fw or sw version control. tools V2
 *
 * modify logs:  Copyright urit Co.,Ltd.All Right Reserved
-* 2026.09.23    xuqiang   create
+* 2026.11.21    xuqiang   create
 *******************************************************************************/
 #ifndef _VER_DEF_H
 #define _VER_DEF_H
@@ -47,7 +47,7 @@ Constant and Macro Definition
     #define VERSION_COMP_LOCALTOIN          0x08008130
     #define ARCH_NO                         0x10000703
     #define VERSION_FLAG                    0x17010101
-    #define VERSION_DATE                    0x21092602
+    #define VERSION_DATE                    0x21112603
     #define VERSION_HW                      0x05010000
     #define VERSION_HW_DATE                 0x03032200
 #endif
